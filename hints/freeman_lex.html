@@ -1,0 +1,128 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        I have no idea how to start solving this mission.
+    </div>
+    <div class="answer">
+        <p>
+            Catch an idea 💡! Find the absolute value of a given number, convert it into string, and reverse it. If the original number is negative - complement the final number with minus. Convert everything back to integer.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, what should I start from?
+    </div>
+    <div class="answer">
+        <p>
+            Find the absolute value of a given number with <a target="_blank" href="https://www.w3schools.com/python/ref_func_abs.asp">abs()</a> function.
+        </p>
+        <pre class="brush: python">
+abs(num)
+        </pre>
+        <p>
+            Convert it to string with <a target="_blank" href="https://www.w3schools.com/python/ref_func_str.asp">str()</a> function.
+        </p>
+        <pre class="brush: python">
+str(abs(num))
+        </pre>
+        <p>
+            Reverse the string with <a target="_blank" href="https://www.freecodecamp.org/news/python-slicing-how-to-slice-an-array/">negative slicing</a>.
+        </p>
+        <pre class="brush: python">
+str(abs(num))[::-1]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        What to do next?
+    </div>
+    <div class="answer">
+        <p>
+            if the original number is negative, complement the expression with <b class="code">"-"</b> before. For this purpose use Python ability to interpret logic value as integer.
+        </p>
+        <pre class="brush: python">
+'-' * (num < 0)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I still need a hint.
+    </div>
+    <div class="answer">
+        <p>
+            Concatenate two above expression together and convert the result back to integer.
+        </p>
+        <pre class="brush: python">
+int('-' * (num < 0) + str(abs(num))[::-1])
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        So, how my final solution should look like?
+    </div>
+    <div class="answer">
+        <p>
+            You just need to wrap your code into function expression and return the above expression. Using type hints for input and output data are highly recommended.
+        </p>
+        <p>Here is the whole solution:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int) -> int:
+
+    return int('-' * (num < 0) + str(abs(num))[::-1])
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+            Without using string conversion continuously divide the given number by 10 and build a new reversed number. 
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int) -> int:
+
+    reversed_num, absolute_num = 0, abs(num)
+    while absolute_num:
+        absolute_num, remainder = divmod(absolute_num, 10)
+        reversed_num = reversed_num * 10 + remainder
+        
+    return reversed_num if num >= 0 else -reversed_num
+        </pre>
+        </div>
+        <p>
+            Recursive solution with two additional arguments of function.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int, reversed_num=0, sign=1) -> int:
+
+    if num < 0: sign = -1
+    if num == 0: return reversed_num if sign > 0 else -reversed_num
+    a, b = divmod(abs(num), 10)
+    
+    return reverse_digits(a, reversed_num * 10 + b, sign)
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Thanks! I know and understand more now! Everything works fine!
+    </div>
+    <div class="answer">
+        Glad to hear it 👍!
+    </div>
+</div>
+</body>
