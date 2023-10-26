@@ -1,0 +1,128 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Je n'ai aucune idée de la manière de commencer à résoudre cette mission.
+    </div>
+    <div class="answer">
+        <p>
+            Trouvez une idée 💡! Trouvez la valeur absolue d'un nombre donné, convertissez-la en chaîne de caractères et inversez-la. Si le nombre original est négatif - complétez le nombre final avec moins. Reconvertissez le tout en nombre entier.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, par quoi dois-je commencer?
+    </div>
+    <div class="answer">
+        <p>
+            Trouvez la valeur absolue d'un nombre donné à l'aide de la fonction <a target="_blank" href="https://www.w3schools.com/python/ref_func_abs.asp">abs()</a>.
+        </p>
+        <pre class="brush: python">
+abs(num)
+        </pre>
+        <p>
+            Convertissez-le en chaîne de caractères avec la fonction <a target="_blank" href="https://www.w3schools.com/python/ref_func_str.asp">str()</a>.
+        </p>
+        <pre class="brush: python">
+str(abs(num))
+        </pre>
+        <p>
+            Inversez la chaîne avec la fonction <a target="_blank" href="https://www.freecodecamp.org/news/python-slicing-how-to-slice-an-array/">negative slicing</a>.
+        </p>
+        <pre class="brush: python">
+str(abs(num))[::-1]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Que faire ensuite?
+    </div>
+    <div class="answer">
+        <p>
+            si le nombre original est négatif, complétez l'expression avec <b class="code">"-"</b> avant. Pour ce faire, utilisez la capacité de Python à interpréter les valeurs logiques comme des entiers.
+        </p>
+        <pre class="brush: python">
+'-' * (num < 0)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        J'ai encore besoin d'un indice.
+    </div>
+    <div class="answer">
+        <p>
+            Concaténer les deux expressions ci-dessus et convertir le résultat en entier.
+        </p>
+        <pre class="brush: python">
+int('-' * (num < 0) + str(abs(num))[::-1])
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Alors, à quoi devrait ressembler ma solution finale?
+    </div>
+    <div class="answer">
+        <p>
+            Il vous suffit d'envelopper votre code dans une expression de fonction et de renvoyer l'expression ci-dessus. Il est fortement recommandé d'utiliser des indications de type pour les données d'entrée et de sortie.
+        </p>
+        <p>Voici la solution complète:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int) -> int:
+
+    return int('-' * (num < 0) + str(abs(num))[::-1])
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Montrez-moi d'autres solutions!<br />
+        parce que je veux être une vraie 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Bien sûr, prenez-le!</p>
+        <p>
+            Sans utiliser la conversion de chaîne en continu diviser le nombre donné par 10 et construire un nouveau nombre inversé. 
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int) -> int:
+
+    reversed_num, absolute_num = 0, abs(num)
+    while absolute_num:
+        absolute_num, remainder = divmod(absolute_num, 10)
+        reversed_num = reversed_num * 10 + remainder
+        
+    return reversed_num if num>= 0 else -reversed_num
+        </pre>
+        </div>
+        <p>
+            Solution récursive avec deux arguments supplémentaires de la fonction.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int, reversed_num=0, sign=1) -> int:
+
+    if num < 0: sign = -1
+    if num == 0: return reversed_num if sign> 0 else -reversed_num
+    a, b = divmod(abs(num), 10)
+    
+    return reverse_digits(a, reversed_num * 10 + b, sign)
+        </pre>
+        </div>
+        <p>Cliquez sur <b>Best Solutions</b> dans le menu mission et découvrez de nombreuses autres solutions intéressantes!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Merci beaucoup! Je sais et je comprends mieux maintenant! Tout fonctionne bien!
+    </div>
+    <div class="answer">
+        Heureux de l'apprendre 👍!
+    </div>
+</div>
+</body>
