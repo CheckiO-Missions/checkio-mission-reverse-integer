@@ -1,0 +1,128 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Nie mam pojęcia, jak zacząć rozwiązywać tę misję.
+    </div>
+    <div class="answer">
+        <p>
+            Proszę złapać pomysł 💡! Proszę znaleźć wartość bezwzględną danej liczby, zamienić ją na ciąg i odwrócić. Jeśli oryginalna liczba jest ujemna - proszę uzupełnić końcową liczbę minusem. Proszę przekonwertować wszystko z powrotem na liczbę całkowitą.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, od czego powinienem zacząć?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę znaleźć wartość bezwzględną danej liczby za pomocą funkcji <a target="_blank" href="https://www.w3schools.com/python/ref_func_abs.asp">abs()</a>.
+        </p>
+        <pre class="brush: python">
+abs(num)
+        </pre>
+        <p>
+            Konwertowanie na ciąg znaków za pomocą funkcji <a target="_blank" href="https://www.w3schools.com/python/ref_func_str.asp">str()</a>.
+        </p>
+        <pre class="brush: python">
+str(abs(num))
+        </pre>
+        <p>
+            Proszę odwrócić ciąg znaków za pomocą funkcji <a target="_blank" href="https://www.freecodecamp.org/news/python-slicing-how-to-slice-an-array/">negative slicing</a>.
+        </p>
+        <pre class="brush: python">
+str(abs(num))[::-1]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Co robić dalej?
+    </div>
+    <div class="answer">
+        <p>
+            jeśli oryginalna liczba jest ujemna, proszę uzupełnić wyrażenie za pomocą <b class="code">"-"</b>. W tym celu proszę wykorzystać zdolność Pythona do interpretowania wartości logicznej jako liczby całkowitej.
+        </p>
+        <pre class="brush: python">
+'-' * (num < 0)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Nadal potrzebuję podpowiedzi.
+    </div>
+    <div class="answer">
+        <p>
+            Proszę połączyć dwa powyższe wyrażenia i przekonwertować wynik z powrotem na liczbę całkowitą.
+        </p>
+        <pre class="brush: python">
+int('-' * (num < 0) + str(abs(num))[::-1])
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak więc powinno wyglądać moje ostateczne rozwiązanie?
+    </div>
+    <div class="answer">
+        <p>
+            Wystarczy zawinąć kod w wyrażenie funkcji i zwrócić powyższe wyrażenie. Zaleca się używanie podpowiedzi typu dla danych wejściowych i wyjściowych.
+        </p>
+        <p>Oto całe rozwiązanie:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int) -> int:
+
+    return int('-' * (num < 0) + str(abs(num))[::-1])
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Proszę pokazać mi więcej rozwiązań!<br />
+        bo chcę być prawdziwą 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Jasne, proszę łapać!</p>
+        <p>
+            Bez użycia konwersji ciągów, proszę w sposób ciągły podzielić podaną liczbę przez 10 i utworzyć nową odwróconą liczbę. 
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int) -> int:
+
+    reversed_num, absolute_num = 0, abs(num)
+    while absolute_num:
+        absolute_num, remainder = divmod(absolute_num, 10)
+        reversed_num = reversed_num * 10 + remainder
+        
+    return reversed_num if num>= 0 else -reversed_num
+        </pre>
+        </div>
+        <p>
+            Rozwiązanie rekurencyjne z dwoma dodatkowymi argumentami funkcji.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int, reversed_num=0, sign=1) -> int:
+
+    if num < 0: sign = -1
+    if num == 0: return reversed_num if sign> 0 else -reversed_num
+    a, b = divmod(abs(num), 10)
+    
+    return reverse_digits(a, reversed_num * 10 + b, sign)
+        </pre>
+        </div>
+        <p>Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!
+    </div>
+    <div class="answer">
+        Miło mi to słyszeć 👍!
+    </div>
+</div>
+</body>
