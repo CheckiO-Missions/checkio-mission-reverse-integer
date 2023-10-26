@@ -1,0 +1,139 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Nie mam pojęcia, jak zacząć rozwiązywać tę misję.
+    </div>
+    <div class="answer">
+        <p>
+            Proszę złapać pomysł 💡! Proszę znaleźć wartość bezwzględną danej liczby, zamienić ją na ciąg i odwrócić. Jeśli oryginalna liczba jest ujemna - proszę uzupełnić końcową liczbę minusem. Proszę przekonwertować wszystko z powrotem na liczbę całkowitą.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, od czego powinienem zacząć?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę znaleźć wartość bezwzględną danej liczby za pomocą funkcji <a target="_blank" href="https://www.w3schools.com/jsref/jsref_abs.asp">Math.abs()</a>.
+        </p>
+        <pre class="brush: javascript">
+Math.abs(num)
+        </pre>
+        <p>
+            Proszę przekonwertować ją na ciąg znaków za pomocą metody <a target="_blank" href="https://www.w3schools.com/jsref/jsref_tostring_string.asp">toString()</a> i podzielić za pomocą metody <a target="_blank" href="https://www.w3schools.com/jsref/jsref_split.asp">split()</a> z pustym argumentem ciągu znaków.
+        </p>
+        <pre class="brush: javascript">
+Math.abs(num).toString().split('')
+        </pre>
+        <p>
+            Proszę odwrócić tablicę za pomocą metody <a target="_blank" href="https://www.w3schools.com/jsref/jsref_reverse.asp">reverse()</a>.
+        </p>
+        <pre class="brush: javascript">
+Math.abs(num).toString().split('').reverse()
+        </pre>
+        <p>
+            Dołączenie tablicy z powrotem do łańcucha za pomocą metody <a target="_blank" href="https://www.w3schools.com/jsref/jsref_join.asp">join()</a> z pustym argumentem łańcucha.
+        </p>
+        <pre class="brush: python">
+Math.abs(num).toString().split('').reverse().join('')
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Co robić dalej?
+    </div>
+    <div class="answer">
+        <p>
+            jeśli oryginalna liczba jest ujemna, proszę uzupełnić wyrażenie za pomocą <b class="code">"-"</b>. W tym celu proszę użyć operatora trójargumentowego.
+        </p>
+        <pre class="brush: javascript">
+(num < 0? '-':'')
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Nadal potrzebuję podpowiedzi.
+    </div>
+    <div class="answer">
+        <p>
+            Proszę połączyć dwa powyższe wyrażenia i przekonwertować wynik z powrotem na liczbę całkowitą.
+        </p>
+        <pre class="brush: javascript">
+parseInt((num < 0? '-':'') + Math.abs(num).toString().split('').reverse().join(''))
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak więc powinno wyglądać moje ostateczne rozwiązanie?
+    </div>
+    <div class="answer">
+        <p>
+            Wystarczy zawinąć swój kod w wyrażenie funkcyjne i zwrócić powyższe wyrażenie. Zaleca się używanie podpowiedzi typu dla danych wejściowych i wyjściowych.
+        </p>
+        <p>Oto całe rozwiązanie:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function reverseDigits(num: number, reversed = 0, sign=1): number {
+
+    return parseInt((num < 0? '-':'') + Math.abs(num).toString().split('').reverse().join(''))
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Proszę pokazać mi więcej rozwiązań!<br />
+        bo chcę być prawdziwym 🥇 bohaterem Javascript!
+    </div>
+    <div class="answer">
+        <p>Jasne, proszę pobrać!</p>
+        <p>
+            Bez użycia konwersji ciągów, proszę w sposób ciągły podzielić podaną liczbę przez 10 i utworzyć nową odwróconą liczbę. 
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function reverseDigits(num: number): number {
+
+    let reversed = 0;
+    const sign = num < 0? -1: 1;
+    num = Math.abs(num);
+    while (num!== 0) {
+        reversed = reversed * 10 + num % 10;
+        num = Math.floor(num / 10);
+    }
+    return sign * reversed;
+}
+        </pre>
+        </div>
+        <p>
+            Rozwiązanie rekurencyjne z dwoma dodatkowymi argumentami funkcji.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function reverseDigits(num: number, reversed = 0, sign=1): number {
+
+    if (num < 0) sign = -1;
+    if (num === 0) return sign * reversed;
+    num = Math.abs(num);
+    
+    return reverseDigits(Math.floor(num / 10), reversed * 10 + num % 10, sign);
+}
+        </pre>
+        </div>
+        <p>Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!
+    </div>
+    <div class="answer">
+        Miło mi to słyszeć 👍!
+    </div>
+</div>
+</body>
