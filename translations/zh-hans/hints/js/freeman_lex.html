@@ -1,0 +1,139 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这个任务。
+    </div>
+    <div class="answer">
+        <p>
+            抓住一个想法💡！找出给定数字的绝对值，将其转换成字符串，然后倒转。如果原数是负数，则用负数补足最终数。将所有内容转换回整数。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        好吧，我应该从什么开始呢？
+    </div>
+    <div class="answer">
+        <p>
+            使用<a target="_blank" href="https://www.w3schools.com/jsref/jsref_abs.asp">Math.abs()</a> 函数求给定数字的绝对值。
+        </p>
+        <pre class="brush: javascript">
+Math.abs(num)
+        </pre>
+        <p>
+            使用<a target="_blank" href="https://www.w3schools.com/jsref/jsref_tostring_string.asp">toString()</a> 方法将其转换为字符串，并使用<a target="_blank" href="https://www.w3schools.com/jsref/jsref_split.asp">split()</a> 方法分割为空字符串参数。
+        </p>
+        <pre class="brush: javascript">
+Math.abs(num).toString().split('')
+        </pre>
+        <p>
+            使用<a target="_blank" href="https://www.w3schools.com/jsref/jsref_reverse.asp">reverse()</a> 方法反转数组。
+        </p>
+        <pre class="brush: javascript">
+Math.abs(num).toString().split('').reverse()
+        </pre>
+        <p>
+            使用<a target="_blank" href="https://www.w3schools.com/jsref/jsref_join.asp">join()</a> 方法将数组连接回字符串，参数为空字符串。
+        </p>
+        <pre class="brush: python">
+Math.abs(num).toString().split('').reverse().join('')
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        下一步该怎么做？
+    </div>
+    <div class="answer">
+        <p>
+            如果原始数字是负数，则在表达式之前用<b class="code">"-"</b> 补充。为此，请使用三元运算符。
+        </p>
+        <pre class="brush: javascript">
+(num < 0? '-':'')
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        我还需要提示。
+    </div>
+    <div class="answer">
+        <p>
+            将上述两个表达式连接起来，然后将结果转换回整数。
+        </p>
+        <pre class="brush: javascript">
+parseInt((num < 0? '-':'') + Math.abs(num).toString().split('').reverse().join(''))
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        那么，我的最终解决方案应该是怎样的呢？
+    </div>
+    <div class="answer">
+        <p>
+            你只需将代码封装成函数表达式，然后返回上述表达式即可。强烈建议对输入和输出数据使用类型提示。
+        </p>
+        <p>以下是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function reverseDigits(num: number, reversed = 0, sign=1): number {
+
+    return parseInt((num < 0? '-':'') + Math.abs(num).toString().split('').reverse().join(''))
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        向我展示更多解决方案！<br />
+        因为我想成为真正的 🥇 Javascript 英雄！
+    </div>
+    <div class="answer">
+        <p>当然，抓紧时间！</p>
+        <p>
+            在不使用字符串转换的情况下，连续将给定的数字除以 10，并建立一个新的相反数字。 
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function reverseDigits(num: number): number {
+
+    let reversed = 0;
+    const sign = num < 0? -1: 1;
+    num = Math.abs(num);
+    while (num!== 0) {
+        reversed = reversed * 10 + num % 10;
+        num = Math.floor(num / 10);
+    }
+    return sign * reversed;
+}
+        </pre>
+        </div>
+        <p>
+            使用两个额外函数参数的递归解决方案。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function reverseDigits(num: number, reversed = 0, sign=1): number {
+
+    if (num < 0) sign = -1;
+    if (num === 0) return sign * reversed;
+    num = Math.abs(num);
+    
+    return reverseDigits(Math.floor(num / 10), reversed * 10 + num % 10, sign);
+}
+        </pre>
+        </div>
+        <p>点击任务菜单<b>Best Solutions</b> ，查看更多有趣的解决方案！</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        谢谢！我现在知道并理解得更多了！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息 👍！
+    </div>
+</div>
+</body>
