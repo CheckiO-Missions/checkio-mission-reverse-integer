@@ -1,0 +1,128 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这个任务。
+    </div>
+    <div class="answer">
+        <p>
+            抓住一个想法💡！找出给定数字的绝对值，将其转换成字符串，然后倒转。如果原数是负数，则用负数补足最终数。将所有内容转换回整数。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        好吧，我应该从什么开始呢？
+    </div>
+    <div class="answer">
+        <p>
+            使用<a target="_blank" href="https://www.w3schools.com/python/ref_func_abs.asp">abs()</a> 函数求给定数字的绝对值。
+        </p>
+        <pre class="brush: python">
+abs(num)
+        </pre>
+        <p>
+            使用<a target="_blank" href="https://www.w3schools.com/python/ref_func_str.asp">str()</a> 函数将其转换为字符串。
+        </p>
+        <pre class="brush: python">
+str(abs(num))
+        </pre>
+        <p>
+            使用<a target="_blank" href="https://www.freecodecamp.org/news/python-slicing-how-to-slice-an-array/">negative slicing</a> 反转字符串。
+        </p>
+        <pre class="brush: python">
+str(abs(num))[::-1]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        下一步该怎么做？
+    </div>
+    <div class="answer">
+        <p>
+            如果原始数字是负数，在表达式之前用<b class="code">"-"</b> 补充。为此，请使用 Python 将逻辑值解释为整数的能力。
+        </p>
+        <pre class="brush: python">
+'-' * (num < 0)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        我还需要提示。
+    </div>
+    <div class="answer">
+        <p>
+            将上述两个表达式连接起来，然后将结果转换回整数。
+        </p>
+        <pre class="brush: python">
+int('-' * (num < 0) + str(abs(num))[::-1])
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        那么，我的最终解决方案应该是怎样的呢？
+    </div>
+    <div class="answer">
+        <p>
+            你只需将代码封装成函数表达式，然后返回上述表达式即可。强烈建议对输入和输出数据使用类型提示。
+        </p>
+        <p>以下是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int) -> int:
+
+    return int('-' * (num < 0) + str(abs(num))[::-1])
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        向我展示更多解决方案！<br />
+        因为我想成为一个真正的 🥇 Python Ninnjaa！
+    </div>
+    <div class="answer">
+        <p>当然，抓紧时间！</p>
+        <p>
+            在不使用字符串转换的情况下，连续将给定的数字除以 10，并建立一个新的相反数字。 
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int) -> int:
+
+    reversed_num, absolute_num = 0, abs(num)
+    while absolute_num:
+        absolute_num, remainder = divmod(absolute_num, 10)
+        reversed_num = reversed_num * 10 + remainder
+        
+    return reversed_num if num>= 0 else -reversed_num
+        </pre>
+        </div>
+        <p>
+            使用两个额外函数参数的递归解决方案。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def reverse_digits(num: int, reversed_num=0, sign=1) -> int:
+
+    if num < 0: sign = -1
+    if num == 0: return reversed_num if sign> 0 else -reversed_num
+    a, b = divmod(abs(num), 10)
+    
+    return reverse_digits(a, reversed_num * 10 + b, sign)
+        </pre>
+        </div>
+        <p>点击任务菜单<b>Best Solutions</b> ，查看更多有趣的解决方案！</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        谢谢！我现在知道并理解得更多了！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息 👍！
+    </div>
+</div>
+</body>
