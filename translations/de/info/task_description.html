@@ -1,0 +1,42 @@
+<!-- Describe task in general -->
+
+<p>
+    Kehrt die Ziffern einer gegebenen Ganzzahl um. Zum Beispiel sollte <code>1234</code> zu <code>4321</code> werden. Bei negativen ganzen Zahlen sollte das Vorzeichen vorne bleiben, z.B. wird <code>-123</code> zu <code>-321</code>.  
+</p>
+
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> Ganzzahl <span>({% if is_js %}number{% else %}int{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> Integer <span>({% if is_js %}number{% else %}int{% endif %})</span>. 
+</p>
+
+
+<p>
+    <strong>Beispiele:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<p class="for_info_only">
+
+    <strong>Wie sie verwendet wird:</strong>
+    <i>diese Funktion kann in verschiedenen algorithmischen Herausforderungen, zahlenbasierten Rätseln und bestimmten numerischen Berechnungen verwendet werden.</i>
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p>
+    <strong>Vorbedingung:</strong>
+    <ul>
+    <li><i><sup>-109</sup> ≤ num ≤<sup>109</sup>.</i></li>
+    </ul>
+</p>
